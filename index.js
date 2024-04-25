@@ -10,6 +10,8 @@ const score = document.getElementById('score');
 const player1Score = document.getElementById('player1-score');
 const player2Score = document.getElementById('player2-score');
 const playerTurn = document.getElementById('player-turn');
+// Assuming you have a list of all question buttons
+let questionButtons = document.querySelectorAll('.question-button');
 
 // Initializing variables to keep track of the current player and their scores
 let currentPlayer = 1;
@@ -62,10 +64,7 @@ switchPlayer();
 let selectedQuestion = null; // Variable to store the currently selected question
 
 function handleQuestionClick(event) {
-  if (selectedQuestion !== null) {
-    alert('Please answer one question at a time.');
-    return; // Return early to prevent the new question from being selected
-  }
+  // Extracts the category and value of the clicked question
   const category = event.target.dataset.category;
   const value = parseInt(event.target.dataset.value, 10);
   const questionsInCategory = placeholderQuestions.filter(
@@ -91,19 +90,12 @@ function handleQuestionClick(event) {
   guess.disabled = false;
   pass.disabled = false;
   nextRound.disabled = false;
-
-  // Disable the question after it has been answered
-  event.target.classList.add('disabled');
 }
 
 // Alerts the first player to start the game once the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
   alert("Player 1, it's your turn to start the game!");
-  renderCategories(); // Displays the categories
-  setupQuestionClickListeners(); // Prepares the questions for interaction
 });
-
-// Attaches an event listener to the guess button for checking the user's answer
 
 // Function to check if the user's answer is correct
 guess.addEventListener('click', checkAnswer);
@@ -125,10 +117,6 @@ function checkAnswer() {
     alert(`Player ${currentPlayer}, it's your turn to guess!`);
   }
 
-  // Update the score displays
-  player1Score.textContent = `Player 1 Score: ${scores.player1}`;
-  player2Score.textContent = `Player 2 Score: ${scores.player2}`;
-
   // Resets the input field for the next answer
   document.getElementById('answer').value = '';
   document.getElementById('question-container').style.display = 'disabled';
@@ -137,12 +125,8 @@ function checkAnswer() {
   guess.disabled = true; // Disables the guess button until the next question is selected
   pass.disabled = true; // Similarly, disables the pass button
 
-  document.getElementsByClassName('question-container')[
-    index
-  ].style.pointerEvents = 'none';
-
-  document.getElementsByClassName('question-container')[index].style.opacity =
-    '0.5';
+  // Enable all questions for the next turn
+  enableAllQuestions();
 }
 function passQuestion() {
   currentPlayer = currentPlayer === 1 ? 2 : 1; // Switch players
@@ -158,9 +142,34 @@ function passQuestion() {
   pass.disabled = true; // Disables the pass button until the next question is selected
 }
 
+// Function to disable all questions
+function disableAllQuestions() {
+  questionButtons.forEach((button) => {
+    button.disabled = true;
+  });
+}
+
+//Function to enable all questions
+function enableAllQuestions() {
+  questionButtons.forEach((button) => {
+    button.disabled = false;
+  });
+}
+
+// Add click event listener to each question button
+questionButtons.forEach((button) => {
+  button.addEventListener('click', function () {
+    // Disable all questions when one is clicked
+    disableAllQuestions();
+
+    // Enable the clicked question
+    this.disabled = false;
+  });
+});
+
 // Add event listener to the pass button
 pass.addEventListener('click', passQuestion);
 
-renderCategories();
-setupQuestionClickListeners();
+renderCategories(); // Displays the categories
+setupQuestionClickListeners(); // Prepares the questions for interaction
 
