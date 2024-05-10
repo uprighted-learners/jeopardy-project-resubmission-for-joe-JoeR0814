@@ -1,0 +1,254 @@
+body {
+  /* width: 536px; */
+  /* height: 71px; */
+  justify-content: flex-end;
+  align-items: center;
+  background: darkblue;
+  /* padding-left: 30%; */
+}
+
+/* this styles all the headers on the all the rounds */
+h1 {
+  display: flex;
+  justify-content: center;
+  background-color: blue;
+  color: gold;
+  padding: 10px;
+  border: 2rem solid gold;
+  font-size: 50px;
+}
+
+/* this styles the texts that tells which player is up to play */
+.player-turn {
+  display: flex;
+  justify-content: center;
+  color: gold;
+  margin-bottom: 30px;
+  font-size: x-large;
+}
+
+/* this container styles the category and questions table and also the picture in the home page also styles the category and questions grid on rounds 1 and 2 */
+.container {
+  background-color: blue;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.category {
+  color: gold;
+  text-align: center;
+  border: 5px solid purple;
+}
+.category:hover {
+  color: red;
+}
+
+.question {
+  color: gold;
+  text-align: center;
+  border: 1rem solid gold;
+  width: 75px;
+  max-width: 75px;
+  height: 75px;
+}
+
+.question:hover {
+  color: red;
+}
+
+/* styles the picture in the home page */
+img {
+  display: block;
+  height: 295px;
+  width: 430px;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+
+/* this is the play button on the home page */
+.btn {
+  display: block;
+  text-align: center;
+  margin: 20px;
+  font-size: 30px;
+  padding: 30px;
+  background-color: blue;
+  color: gold;
+}
+
+.btn:hover {
+  color: red;
+}
+
+/* this id container styles the input div and player-container div */
+#container {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+}
+
+/* this styles the placeholder and answer box */
+#input {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px;
+}
+
+/* this id is a container div for the guess and pass button elements */
+#guess-button {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.guess:hover {
+  color: red;
+}
+
+.pass:hover {
+  color: red;
+}
+
+/* this styles the player-1 and player-2 with the score status */
+#player-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  padding: 50px;
+}
+
+.player {
+  color: gold;
+  font-size: 20px;
+  border: 5px solid gold;
+  background-color: blue;
+}
+.score {
+  color: gold;
+  font-size: 20px;
+}
+
+/* this styles the next round buttons on both round 1 and round 2 */
+.next-round {
+  display: flex;
+  color: gold;
+  font-size: 20px;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+
+.next-round:hover {
+  color: red;
+}
+
+.final-container {
+  background-color: blue;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.final-category {
+  font-size: 20px;
+  background-color: gold;
+  color: blue;
+  text-align: center;
+  border: 5px solid purple;
+}
+
+.final-question {
+  font-size: 20px;
+  margin-top: 30px;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  border: 2px solid grey;
+  color: blue;
+  background-color: gold;
+  padding: 90px;
+}
+
+/* this styles the input-container in the final-round html */
+.input-container {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+}
+
+/* this is the answer box in the final round */
+
+.answer {
+  display: flex;
+  text-align: center;
+  margin: 10px;
+}
+/* final round bet button */
+.bet {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  padding: 5px;
+}
+
+.bet:hover {
+  color: red;
+}
+
+.footer {
+  background-color: blue;
+  color: gold;
+  border: 3px solid gold;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: center;
+  font-size: x-large;
+}
+
+/* Mobile devices */
+@media only screen and (max-width: 480px) {
+  body {
+    background-color: darkblue;
+    display: block;
+  }
+  .container {
+    height: auto;
+  }
+  h1 {
+    display: flex;
+    width: auto;
+  }
+}
+
+/* ipad mini*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+  }
+
+  h1 {
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .player-turn {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-right: 30px;
+  }
+}
