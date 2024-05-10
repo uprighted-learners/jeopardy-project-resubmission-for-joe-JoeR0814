@@ -2,6 +2,7 @@
 import { placeholderQuestions } from './placeholder-questions.js';
 
 // Grabbing HTML elements to interact with them in JavaScript
+const questionContainer = document.getElementById('question-container');
 const guess = document.getElementById('guess');
 const pass = document.getElementById('pass');
 const nextRound = document.getElementById('next-round');
@@ -24,7 +25,7 @@ let currentValue = 0; // Stores the value of the current question
 // Initially disabling the guess and pass buttons because no question is selected yet
 guess.disabled = true;
 pass.disabled = true;
-nextRound.disabled = true;
+// nextRound.disabled = true;
 
 // Function to extract unique categories from the list of questions
 function getCategories(questions) {
@@ -55,10 +56,10 @@ function switchPlayer() {
   currentPlayer = currentPlayer === 2 ? 1 : 1;
 
   // Update the player turn display with the player's name
-  document.getElementById(
-    'player-turn',
-  ).textContent = `Player ${currentPlayer}'s Turn`;
 }
+// document.getElementById(
+//   'player-turn',
+// ).textContent = `Player ${currentPlayer}'s Turn`;
 switchPlayer();
 
 let selectedQuestion = null; // Variable to store the currently selected question
@@ -89,7 +90,7 @@ function handleQuestionClick(event) {
   // Enables the guess and pass buttons now that a question is selected
   guess.disabled = false;
   pass.disabled = false;
-  nextRound.disabled = false;
+  // nextRound.disabled = false;
 }
 
 // Alerts the first player to start the game once the DOM is fully loaded
@@ -100,7 +101,37 @@ document.addEventListener('DOMContentLoaded', () => {
 // Function to check if the user's answer is correct
 guess.addEventListener('click', checkAnswer);
 
-// Function to check if the user's answer is correct
+// // Function to check if the user's answer is correct
+// function checkAnswer() {
+//   const userAnswer = userInput.value.toLowerCase().trim(); // Gets and trims the user's answer
+
+//   // Compares the user's answer to the correct answer, case-insensitively
+//   if (userAnswer === currentAnswer.toLowerCase().trim()) {
+//     alert('Correct! Please choose another question.'); // Alerts the user if the answer is correct
+//     scores['player' + currentPlayer] += currentValue; // Updates the score
+//   } else {
+//     alert('Incorrect!');
+//     scores['player' + currentPlayer] -= currentValue; // Decreases the score if the answer is incorrect
+
+//     // Switches to the other player
+//     currentPlayer = currentPlayer === 1 ? 2 : 1;
+//     alert(`Player ${currentPlayer}, it's your turn to guess!`);
+//   }
+
+//   // Resets the input field for the next answer
+//   // document.getElementById('answer').value = '';
+//   // document.getElementById('question-container').style.display = 'disabled';
+//   // document.getElementById('categories').style.display = 'flex';
+//   // document.getElementById('userInput').value = '';
+//   guess.disabled = true; // Disables the guess button until the next question is selected
+//   pass.disabled = true; // Similarly, disables the pass button
+
+//   // Enable all questions for the next turn
+//   // enableAllQuestions();
+// }
+
+// this will genarate the players score when they answer a correct question and also will subtract the score when they answer a wrong question
+
 function checkAnswer() {
   const userAnswer = userInput.value.toLowerCase().trim(); // Gets and trims the user's answer
 
@@ -108,6 +139,13 @@ function checkAnswer() {
   if (userAnswer === currentAnswer.toLowerCase().trim()) {
     alert('Correct! Please choose another question.'); // Alerts the user if the answer is correct
     scores['player' + currentPlayer] += currentValue; // Updates the score
+    if (currentPlayer === 1) {
+      play1Score += currentValue;
+      player1Score.textContent = play1Score;
+    } else {
+      play2Score += currentValue;
+      player2Score.textContent = play2Score;
+    }
   } else {
     alert('Incorrect!');
     scores['player' + currentPlayer] -= currentValue; // Decreases the score if the answer is incorrect
@@ -118,16 +156,11 @@ function checkAnswer() {
   }
 
   // Resets the input field for the next answer
-  document.getElementById('answer').value = '';
-  document.getElementById('question-container').style.display = 'disabled';
-  document.getElementById('categories').style.display = 'flex';
-  document.getElementById('userInput').value = '';
-  guess.disabled = true; // Disables the guess button until the next question is selected
-  pass.disabled = true; // Similarly, disables the pass button
-
-  // Enable all questions for the next turn
-  enableAllQuestions();
+  // document.getElementById('answer').value = '';
+  // document.getElementById('question-container').style.display = 'disabled';
+  // document.getElementById('categories').style.display = 'flex';
 }
+
 function passQuestion() {
   currentPlayer = currentPlayer === 1 ? 2 : 1; // Switch players
 

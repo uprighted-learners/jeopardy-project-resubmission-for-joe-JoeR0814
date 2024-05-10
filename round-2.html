@@ -7,11 +7,9 @@
     <title>Jeopardy Game</title>
   </head>
   <body>
-
-
     <h1>ROUND-TWO</h1>
-    <div class="player-turn">
-      <p>PLAYER-2 TURN</p>
+   <div class="player-turn" id="player-turn">
+      <p>PLAYER TURN</p>
     </div>
 
     <div class="container">
@@ -151,15 +149,16 @@
         Player-2 Score:0
       </div>
     </div>
+  <div id="final-round">
+    <a href="final-round.html" class="next-round" id="next-round" disabled >Final Round</a>
+    </div>
+  <script type="module" src="index.js"></script>
 
-    <a href="final-round.html" class="next-round">Next Round</a>
-
-    <script type="module" src="index.js"></script>
   </body>
-    <footer>
-      <div class="footer">
-        <p>when finished with this round click the next round button.</p>
-      </div>
-    </footer>
+  <footer>
+    <div class="footer">
+      <p>when finished with this round click the next round button.</p>
+    </div>
+  </footer>
 </html>
 
