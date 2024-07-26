@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Jeopardy Game</title>
+  </head>
+  <body>
+    <h1>ROUND-TWO</h1>
+   <div class="player-turn" id="player-turn">
+      <p>PLAYER TURN</p>
+    </div>
+
+    <div class="container">
+      <table align="center" border="7" width="869px" height="261px">
+         <tr>
+          <td class="category" id="category">Category</td>
+          <td class="category" id="category">Category</td>
+          <td class="category" id="category">Category</td>
+          <td class="category" id="category">Category</td>
+          <td class="category" id="category">Category</td>
+          <td class="category" id="category">Category</td>
+        </tr>
+        <tr>
+          <td class="question" data-category="Nature" data-value="200">$200</td>
+          <td class="question" data-category="Animals" data-value="200">
+            $200
+          </td>
+          <td class="question" data-category="Computers" data-value="200">
+            $200
+          </td>
+          <td class="question" data-category="Mythology" data-value="200">
+            $200
+          </td>
+          <td class="question" data-category="History" data-value="200">
+            $200
+          </td>
+          <td class="question" data-category="General" data-value="200">
+            $200
+          </td>
+        </tr>
+        <tr>
+          <td class="question" data-category="Nature" data-value="400">$400</td>
+          <td class="question" data-category="Animals" data-value="400">
+            $400
+          </td>
+          <td class="question" data-category="Computers" data-value="400">
+            $400
+          </td>
+          <td class="question" data-category="Mythology" data-value="400">
+            $400
+          </td>
+          <td class="question" data-category="History" data-value="400">
+            $400
+          </td>
+          <td class="question" data-category="General" data-value="400">
+            $400
+          </td>
+        </tr>
+        </tr>
+        <td class="question" data-category="Nature" data-value="600">$600</td>
+        <td class="question" data-category="Animals" data-value="600">
+          $600
+        </td>
+        <td class="question" data-category="Computers" data-value="600">
+          $600
+        </td>
+        <td class="question" data-category="Mythology" data-value="600">
+          $600
+        </td>
+        <td class="question" data-category="History" data-value="600">
+          $600
+        </td>
+        <td class="question" data-category="General" data-value="600">
+          $600
+        </td>
+      </tr>
+        <tr>
+          <td class="question" data-category="Nature" data-value="800">$800</td>
+          <td class="question" data-category="Animals" data-value="800">
+            $800
+          </td>
+          <td class="question" data-category="Computers" data-value="800">
+            $800
+          </td>
+          <td class="question" data-category="Mythology" data-value="800">
+            $800
+          </td>
+          <td class="question" data-category="History" data-value="800">
+            $800
+          </td>
+          <td class="question" data-category="General" data-value="800">
+            $800
+          </td>
+        </tr>
+        <tr>
+          <td class="question" data-category="Nature" data-value="1000">$1000</td>
+          <td class="question" data-category="Animals" data-value="1000">
+            $1000
+          </td>
+          <td class="question" data-category="Computers" data-value="1000">
+            $1000
+          </td>
+          <td class="question" data-category="Mythology" data-value="1000">
+            $1000
+          </td>
+          <td class="question" data-category="History" data-value="1000">
+            $1000
+          </td>
+          <td class="question" data-category="General" data-value="1000">
+            $1000
+          </td>
+        </tr>
+        <tr>
+          <td class="question" data-category="Nature" data-value="1200">$1200</td>
+          <td class="question" data-category="Animals" data-value="1200">
+            $1200
+          </td>
+          <td class="question" data-category="Computers" data-value="1200">
+            $1200
+          </td>
+          <td class="question" data-category="Mythology" data-value="1200">
+            $1200
+          </td>
+          <td class="question" data-category="History" data-value="1200">
+            $1200
+          </td>
+          <td class="question" data-category="General" data-value="1200">
+            $1200
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="container">
+      <div id="input">
+        <input class="answer" placeholder="user input" id="userInput" />
+      </div>
+      <div id="guess-button">
+        <button disabled class="guess" id="guess">guess</button>
+        <button disabled class="pass" id="pass">pass</button>
+      </div>
+    </div>
+    <div id="player-container">
+      <div class="player active" class="player" class="score" id="player1" id="score">
+        Player-1 Score:0
+      </div>
+      <div class="player active"  class="score" id="player2" id="score">
+        Player-2 Score:0
+      </div>
+    </div>
+  <div id="final-round">
+    <a href="final-round.html" class="next-round" id="next-round" disabled >Final Round</a>
+    </div>
+  <script type="module" src="index.js"></script>
+
+  <footer>
+    <div class="footer">
+      <p>when finished with this round click the next round button.</p>
+    </div>
+  </footer>
+</body>
+</html>
+
