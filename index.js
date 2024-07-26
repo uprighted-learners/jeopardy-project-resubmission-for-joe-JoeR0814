@@ -29,6 +29,7 @@ pass.disabled = true;
 
 // Function to extract unique categories from the list of questions
 function getCategories(questions) {
+  console.log(questions);
   // Utilizes a Set to ensure uniqueness and maps over the questions to extract categories
   return [...new Set(questions.map((question) => question.category))];
 }
@@ -55,12 +56,11 @@ function setupQuestionClickListeners() {
 function switchPlayer() {
   currentPlayer = currentPlayer === 2 ? 1 : 1;
 
-  // Update the player turn display with the player's name
+  document.getElementById(
+    'player-turn',
+  ).textContent = `Player ${currentPlayer}'s Turn`;
+  switchPlayer();
 }
-// document.getElementById(
-//   'player-turn',
-// ).textContent = `Player ${currentPlayer}'s Turn`;
-switchPlayer();
 
 let selectedQuestion = null; // Variable to store the currently selected question
 
@@ -94,44 +94,14 @@ function handleQuestionClick(event) {
 }
 
 // Alerts the first player to start the game once the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener() => {
   alert("Player 1, it's your turn to start the game!");
-});
+};
 
 // Function to check if the user's answer is correct
 guess.addEventListener('click', checkAnswer);
 
-// // Function to check if the user's answer is correct
-// function checkAnswer() {
-//   const userAnswer = userInput.value.toLowerCase().trim(); // Gets and trims the user's answer
-
-//   // Compares the user's answer to the correct answer, case-insensitively
-//   if (userAnswer === currentAnswer.toLowerCase().trim()) {
-//     alert('Correct! Please choose another question.'); // Alerts the user if the answer is correct
-//     scores['player' + currentPlayer] += currentValue; // Updates the score
-//   } else {
-//     alert('Incorrect!');
-//     scores['player' + currentPlayer] -= currentValue; // Decreases the score if the answer is incorrect
-
-//     // Switches to the other player
-//     currentPlayer = currentPlayer === 1 ? 2 : 1;
-//     alert(`Player ${currentPlayer}, it's your turn to guess!`);
-//   }
-
-//   // Resets the input field for the next answer
-//   // document.getElementById('answer').value = '';
-//   // document.getElementById('question-container').style.display = 'disabled';
-//   // document.getElementById('categories').style.display = 'flex';
-//   // document.getElementById('userInput').value = '';
-//   guess.disabled = true; // Disables the guess button until the next question is selected
-//   pass.disabled = true; // Similarly, disables the pass button
-
-//   // Enable all questions for the next turn
-//   // enableAllQuestions();
-// }
-
-// this will genarate the players score when they answer a correct question and also will subtract the score when they answer a wrong question
-
+// Function to check if the user's answer is correct
 function checkAnswer() {
   const userAnswer = userInput.value.toLowerCase().trim(); // Gets and trims the user's answer
 
@@ -139,28 +109,38 @@ function checkAnswer() {
   if (userAnswer === currentAnswer.toLowerCase().trim()) {
     alert('Correct! Please choose another question.'); // Alerts the user if the answer is correct
     scores['player' + currentPlayer] += currentValue; // Updates the score
-    if (currentPlayer === 1) {
-      play1Score += currentValue;
-      player1Score.textContent = play1Score;
-    } else {
-      play2Score += currentValue;
-      player2Score.textContent = play2Score;
-    }
+    document.getElementById(
+      `player${currentPlayer}`,
+    ).textContent = ` Player ${currentPlayer} Score:  ${
+      scores['player' + currentPlayer]
+    }`; //displays updated score
   } else {
     alert('Incorrect!');
     scores['player' + currentPlayer] -= currentValue; // Decreases the score if the answer is incorrect
-
+    document.getElementById(
+      `player${currentPlayer}`,
+    ).textContent = ` Player ${currentPlayer} Score:  ${
+      scores['player' + currentPlayer]
+    }`; //displays updated score
     // Switches to the other player
     currentPlayer = currentPlayer === 1 ? 2 : 1;
     alert(`Player ${currentPlayer}, it's your turn to guess!`);
   }
 
   // Resets the input field for the next answer
-  // document.getElementById('answer').value = '';
-  // document.getElementById('question-container').style.display = 'disabled';
-  // document.getElementById('categories').style.display = 'flex';
+  document.getElementById('answer').value = '';
+  //this will display the score of the player
+  document.getElementById('question-container').style.display = 'disabled';
+  document.getElementById('categories').style.display = 'flex';
+  // document.getElementById('userInput').value = '';
+  guess.disabled = true; // Disables the guess button until the next question is selected
+  pass.disabled = true; // Similarly, disables the pass button
+
+  // Enable all questions for the next turn
+  enableAllQuestions();
 }
 
+// this function will pass the question to the next player
 function passQuestion() {
   currentPlayer = currentPlayer === 1 ? 2 : 1; // Switch players
 
